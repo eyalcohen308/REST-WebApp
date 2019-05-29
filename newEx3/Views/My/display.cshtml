@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "display";
+}
+
+<style>
+    .position {
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        background-color: red;
+        display: inline-block;
+    }
+</style>
+<!--span class="position"></!--span><!---->
+<canvas id="MyCanvas" border:10px solid red" />
+
+<script>
+        var canvas = document.getElementById("MyCanvas");
+        var ctx = canvas.getContext("2d");
+
+        ctx.canvas.width = window.innerWidth;
+        ctx.canvas.height = window.innerHeight;
+
+        ctx.beginPath();
+        ctx.font = "7px David";
+        var lon = (@ViewBag.lon +90)*(canvas.height/180);
+        var lat = (@ViewBag.lat+180) * (canvas.width / 360);;
+        // lat = y , lon = x.
+        ctx.fillText("lon: "+ lon+ "lat: " +lat,10,50);
+        ctx.fillStyle = "#FF0000";
+        ctx.arc(500, 500, 50, 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.stroke();
+</script>

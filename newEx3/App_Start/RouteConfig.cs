@@ -13,10 +13,12 @@ namespace newEx3
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("display", "display/{ip}/{port}/{time}",
+            defaults: new { controller = "My", action = "display", time = 0 });
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "My", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
